@@ -1,6 +1,7 @@
 module.exports = {
   extends: ['mantine', 'plugin:@next/next/recommended', 'plugin:jest/recommended'],
   plugins: ['testing-library', 'jest'],
+ 
   overrides: [
     {
       files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
@@ -8,10 +9,14 @@ module.exports = {
     },
   ],
   parserOptions: {
-    project: './tsconfig.json',
+  
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'import/extensions': 'off',
+    'linebreak-style': 'off',
   },
 };
