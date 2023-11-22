@@ -1,0 +1,22 @@
+.tab{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+.box{
+    height: 400px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border: none;;
+    border-radius: 2%;
+    width:18vw;
+    box-shadow: 2px 2px 2px 3px light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    transition:1s;
+}
+.shadow:hover
+{
+    box-shadow: 0px 18px 37px 6px rgba(71,71,71,0.13);
+    -webkit-box-shadow: 0px 18px 37px 6px rgba(71,71,71,0.13);
+    -moz-box-shadow: 0px 18px 37px 6px rgba(71,71,71,0.13);
+    transition:1s;
+    transform: scale(1.01);
+}

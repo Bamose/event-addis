@@ -1,4 +1,4 @@
-import Imagecontent from "./imagecontent";
+import Imagecontent from "./Imagecontent";
 
 export default {
   title: 'imagecontent',
