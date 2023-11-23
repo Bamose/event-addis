@@ -14,9 +14,7 @@ function superadmin() {
     <div>
             <Mainpage />  
         </div>
-    <div className="absolute w-[25%] right-0 ">
- {/*    <Gabpage /> */}
-    </div>
+    
     </div>
     
     </>
