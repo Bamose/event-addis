@@ -1,3 +1,4 @@
+import { AdminNavbar } from "@/components/adminsnavbar/adminsnavbar";
 import EventList from "@/components/eventlist/EventList";
 import Footer from "@/components/footer/footer";
 import { Navbar } from "@/components/header/Navbar";
@@ -9,14 +10,7 @@ export default function HomePage() {
   return (
     <>
     <div className="overflow-y:auto">
-        <Navbar />
-    
-        <Imagecontent />
-
-         <DepTabs />
-
-         <EventList />
-          <Footer /> 
+     <AdminNavbar />
          </div>
     </>
   );

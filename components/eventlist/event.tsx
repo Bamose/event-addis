@@ -24,9 +24,11 @@ export const Event =(/* { event }: eventprops */) => {
       <div className='flex flex-col'>
         <text className='text-xl font-medium px-2 w-full t'>Intro to App & Web Development </text>
         <text className='text-base pt-1 text-red-500 font-medium px-2 pb-3  w-full t'>Fri, Nov 24, 2023 8:30 PM EAT </text>
-        <div  className=' pt-3 px-1'>
-        <FontAwesomeIcon icon={faMapMarkerAlt} style={{ fontSize: '17px', color: 'black' }} />
-        <text className='text-base  font-medium  px-2 w-full t'>CSEC ASTU LAB</text>
+        <div  className='flex flex-row  pt-3 px-2'>
+        <div className='h-6 w-6 '>
+        <FontAwesomeIcon icon={faMapMarkerAlt} className="text-2xl bg-gray "  />
+        </div>
+        <text className='text-base  font-medium  px-2 py-2 w-full t'>CSEC ASTU LAB</text>
         </div>
       </div>
     
