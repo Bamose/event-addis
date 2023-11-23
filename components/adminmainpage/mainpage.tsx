@@ -2,7 +2,7 @@
 
 import { useAppSelector } from '@/store/Store'
 import React, { useEffect, useState } from 'react'
-import { Users } from '../users/users'
+import  {Users } from '../users/users'
 
 
 

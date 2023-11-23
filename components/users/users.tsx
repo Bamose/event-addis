@@ -1,60 +1,57 @@
-import React, { useState } from 'react';
-import { Table, Checkbox } from '@mantine/core';
-import { useGetmembersQuery } from '@/store/api';
-/* import { useGetusersQuery } from '@/store/api';
-import { usertypes } from "../../types/types"; */
+import { useMemo } from 'react';
+import {
+  MantineReactTable,
+  useMantineReactTable,
+  type MRT_ColumnDef, //if using TypeScript (optional, but recommended)
+} from 'mantine-react-table';
 
-/* ype userprops = {
-  user: usertypes;
-}; */
+//If using TypeScript, define the shape of your data (optional, but recommended)
+interface Person {
+  name: string;
+  age: number;
+}
 
+//mock data - strongly typed if you are using TypeScript (optional, but recommended)
+const data: Person[] = [
+  {
+    name: 'John',
+    age: 30,
+  },
+  {
+    name: 'Sara',
+    age: 25,
+  },
+];
 
-
-export const Users = () => {
-
-  const { data, isError, isLoading } = useGetmembersQuery();
-  const [selectedRows, setSelectedRows] = useState<number[]>([]);
-  console.log(data);
-
-  const rows = data?.map((element) => (
-    <Table.Tr
-      key={element.member_id}
-      className={selectedRows.includes(element.member_id) ? 'bg-blue-100' : undefined}
-    >
-      <Table.Td>
-         <Checkbox
-          aria-label="Select row"
-          checked={selectedRows.includes(element.member_id)}
-          onChange={(event) =>
-            setSelectedRows(
-              event.currentTarget.checked
-                ? [...selectedRows, element.member_id]
-                : selectedRows.filter((position) => position !== element.member_id)
-            )
-          }
-        /> 
-      </Table.Td>
-
-      <Table.Td className='text-center'>{element.first_name}</Table.Td>
-
-      <Table.Td className='text-center'>{element.last_name}</Table.Td>
-      <Table.Td className='text-center'>{element.department_name}</Table.Td>
-    </Table.Tr>
-  ));
-
-  return (
-    <div style={{ width: '60vw', height: '90vh', overflowY: 'auto', margin: 'auto' }}>
-      <Table style={{ width: '100%' }}>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th  />
-            <Table.Th >first_name</Table.Th>
-            <Table.Th >last name</Table.Th>
-            <Table.Th >department</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-    </div>
+export const  Users =() =>{
+  //column definitions - strongly typed if you are using TypeScript (optional, but recommended)
+  const columns = useMemo<MRT_ColumnDef<Person>[]>(
+    () => [
+      {
+        accessorKey: 'name', //simple recommended way to define a column
+        header: 'Name',
+        //custom props
+      },
+      {
+        accessorFn: (originalRow) => originalRow.age, //alternate way
+        id: 'age', //id required if you use accessorFn instead of accessorKey
+        header: 'Age',
+        Header: <i style={{ color: 'red' }}>Age</i>, //optional custom markup
+      },
+    ],
+    [],
   );
-  }
+
+  //pass table options to useMantineReactTable
+  const table = useMantineReactTable({
+    columns,
+    data, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+    enableRowSelection: true, //enable some features
+    enableColumnOrdering: true,
+    enableGlobalFilter: false, //turn off a feature
+  });
+
+  //note: you can also pass table options as props directly to <MantineReactTable /> instead of using useMantineReactTable
+  //but that is not recommended and will likely be deprecated in the future
+  return <MantineReactTable table={table} />;
+}

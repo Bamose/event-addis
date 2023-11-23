@@ -35,11 +35,11 @@ export function Navbar() {
       <div  className={classes.inner}>
         <div> LOGO</div>
       
-        <Group  className={classes.bar} gap={5} visibleFrom="xs">
+        <Group  className={classes.bar} spacing={5} >
           {items}
         </Group>
-        
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+    {/*     
+        <Burger opened={opened} onClick={toggle} size="sm" /> */}
        
       </div>
     </header>

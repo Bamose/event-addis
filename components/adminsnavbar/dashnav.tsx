@@ -34,11 +34,11 @@ export function DashNavbar() {
       <div  className={classes.inner}>
         <div> LOGO</div>
       
-        <Group  className={classes.bar} gap={10} visibleFrom="xs">
+        <Group  className={classes.bar} spacing={10} >
           {items}
         </Group>
         
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        {/* <Burger opened={opened} onClick={toggle}  size="sm" /> */}
        
       </div>
     </header>

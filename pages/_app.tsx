@@ -1,17 +1,19 @@
-import '@mantine/core/styles.css';
+
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
-import { theme } from '../theme';
+
 import { Navbar } from '@/components/header/Navbar';
 import './globals.css'
 import { Provider } from 'react-redux';
 import { Store } from '@/store/Store';
 
+
 export default function App({ Component,  pageProps }: AppProps) {
   return (
+
     <Provider store={Store}>
-    <MantineProvider theme={theme}>
+    <MantineProvider >
       <Head>
         <title>CSEC ASTU</title>
         <meta
@@ -25,5 +27,6 @@ export default function App({ Component,  pageProps }: AppProps) {
       <Component {...pageProps} />
     </MantineProvider>
     </Provider>
+
   );
 }
