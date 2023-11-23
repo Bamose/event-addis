@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Checkbox } from '@mantine/core';
+import { useGetmembersQuery } from '@/store/api';
 /* import { useGetusersQuery } from '@/store/api';
 import { usertypes } from "../../types/types"; */
 
@@ -11,33 +12,33 @@ import { usertypes } from "../../types/types"; */
 
 export const Users = () => {
 
-  const { data, isError, isLoading } = useGetusersQuery();
+  const { data, isError, isLoading } = useGetmembersQuery();
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   console.log(data);
 
   const rows = data?.map((element) => (
     <Table.Tr
-      key={element.id}
-      className={selectedRows.includes(element.sms) ? 'bg-blue-100' : undefined}
+      key={element.member_id}
+      className={selectedRows.includes(element.member_id) ? 'bg-blue-100' : undefined}
     >
       <Table.Td>
          <Checkbox
           aria-label="Select row"
-          checked={selectedRows.includes(element.sms)}
+          checked={selectedRows.includes(element.member_id)}
           onChange={(event) =>
             setSelectedRows(
               event.currentTarget.checked
-                ? [...selectedRows, element.sms]
-                : selectedRows.filter((position) => position !== element.sms)
+                ? [...selectedRows, element.member_id]
+                : selectedRows.filter((position) => position !== element.member_id)
             )
           }
         /> 
-    /*   </Table.Td>
+      </Table.Td>
 
-      <Table.Td className='text-center'>{element.id}</Table.Td>
+      <Table.Td className='text-center'>{element.first_name}</Table.Td>
 
-      <Table.Td className='text-center'>{element.sms}</Table.Td>
-      <Table.Td className='text-center'>{element.gabCount}</Table.Td>
+      <Table.Td className='text-center'>{element.last_name}</Table.Td>
+      <Table.Td className='text-center'>{element.department_name}</Table.Td>
     </Table.Tr>
   ));
 
@@ -47,9 +48,9 @@ export const Users = () => {
         <Table.Thead>
           <Table.Tr>
             <Table.Th  />
-            <Table.Th >ID</Table.Th>
-            <Table.Th >Phone Number</Table.Th>
-            <Table.Th >Gab Count</Table.Th>
+            <Table.Th >first_name</Table.Th>
+            <Table.Th >last name</Table.Th>
+            <Table.Th >department</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>

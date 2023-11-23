@@ -1,7 +1,7 @@
 import { configureStore, createAsyncThunk } from "@reduxjs/toolkit";
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { Gabapi } from "./api";
+import { Eventapi } from "./api";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 /* import locationReducer from "./locationSlice";
@@ -10,7 +10,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import whichgabReducer from "./gab";
 export const Store = configureStore({
   reducer: {
-    [Gabapi.reducerPath]: Gabapi.reducer,
+    [Eventapi.reducerPath]: Eventapi.reducer,
    /*  location: locationReducer,
     selectedlocation: selectedlocationReducer, */
     whichgab: whichgabReducer,
@@ -18,7 +18,7 @@ export const Store = configureStore({
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(Gabapi.middleware),
+    getDefaultMiddleware().concat(Eventapi.middleware),
 });
 
 setupListeners(Store.dispatch);

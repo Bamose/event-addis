@@ -1,20 +1,22 @@
-/* import { API_URL } from '@/lib/api/config'; */
-import { eventtypes} from '@/types/types';
+ import { API_URL } from '@/lib/api/config'; 
+import { eventtypes, membertypes} from '@/types/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './Store';
 
 
-
-export const Gabapi = createApi({
-  reducerPath: 'gabapi',
-  baseQuery: fetchBaseQuery({ baseUrl:/* API_URL */'' }),
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjo1LCJ1c2VySWQiOjQsInJvbGUiOiJ1c2VyIn0.bbvaWnKFHFjLmh6YkdvhIuzA0VrHboytkC9mFFZhTSM"
+export const Eventapi = createApi({
+  reducerPath: 'eventapi',
+  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   tagTypes: [ "posts"],
-endpoints: (builder) => ({
-  GetGab: builder.query<eventtypes[], void>({
+endpoints: (builder) => ({  
+  Getmembers: builder.query<membertypes[], void>({
     query: () => ({  
-      url: 'admin/gab',
+      url: 'members',
     method: 'Get',
- 
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
    
   }),
  /*  providesTags: (result) =>
@@ -53,5 +55,5 @@ endpoints: (builder) => ({
 });
 
 export const {
-  useGetGabQuery,
-   } = Gabapi;
+  useGetmembersQuery,
+   } = Eventapi;
