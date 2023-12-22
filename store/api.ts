@@ -2,16 +2,24 @@
 import { eventtypes, membertypes} from '@/types/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './Store';
-import { UserApiResponse } from '@/components/users/users';
-
+import { UserApiResponse } from '@/pages/users';
+import { HYDRATE } from "next-redux-wrapper";
+import { Action, PayloadAction } from '@reduxjs/toolkit';
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjo1LCJ1c2VySWQiOjQsInJvbGUiOiJ1c2VyIn0.bbvaWnKFHFjLmh6YkdvhIuzA0VrHboytkC9mFFZhTSM"
+
+
 export const Eventapi = createApi({
-  reducerPath: 'eventapi',
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === HYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   tagTypes: [ "posts"],
 endpoints: (builder) => ({  
-  Getmembers: builder.query<UserApiResponse, void>({
+  Getmembers: builder.query<any, void>({
     query: () => ({  
       url: 'members',
     method: 'Get',
@@ -20,34 +28,11 @@ endpoints: (builder) => ({
     },
    
   }),
- /*  providesTags: (result) =>
-      result
-        ? [
-            ...result.map(({ id }) => ({ type: 'posts' as const, id })),
-            { type: 'posts', id: 'LIST' },
-          ]
-        : [{ type: 'posts', id: 'LIST' }], */
-     
+
+     providesTags:['posts']
    
   }),
-  //all users
-
- /*  Getusers: builder.query<usertypes[], void>({
-    query: () => ({  
-      url: 'admin/user/allusers',
-    method: 'Get',
- 
-   
-  }), */
- /*  providesTags: (result) =>
-      result
-        ? [
-            ...result.map(({ id }) => ({ type: 'posts' as const, id })),
-            { type: 'posts', id: 'LIST' },
-          ]
-        : [{ type: 'posts', id: 'LIST' }], */
-     
-   
+  
   }),
  
 
@@ -57,4 +42,7 @@ endpoints: (builder) => ({
 
 export const {
   useGetmembersQuery,
+  util: { getRunningQueriesThunk },
    } = Eventapi;
+
+export const {Getmembers} = Eventapi.endpoints;

@@ -1,32 +1,29 @@
-'use server'
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   MantineReactTable,
   useMantineReactTable,
   type MRT_ColumnDef, //if using TypeScript (optional, but recommended)
 } from 'mantine-react-table';
 import { membertypes, usertypes } from '@/types/types';
-import { useGetmembersQuery } from '@/store/api';
+import { Eventapi, getRunningQueriesThunk, useGetmembersQuery } from '@/store/api';
 import { List } from '@mantine/core';
+import { members } from '../components/users/data';
+import { useAppDispatch, wrapper } from '@/store/Store'; // Adjust the import path to your store
+import { Getmembers } from '@/store/api'; // Adjust the import path to your API slice
 
-//If using TypeScript, define the shape of your data (optional, but recommended)
-export type UserApiResponse = {
-  data: Array<membertypes>;
-  meta: {
-    totalRowCount: number;
-  };
-};
-//mock data - strongly typed if you are using TypeScript (optional, but recommended)
+import { GetServerSideProps } from 'next';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { SerializedError } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { RootState } from '@/store/Store'; 
 
-export const  Users =() =>{
 
-  const{data} = useGetmembersQuery()
-  console.log(data?.data)
-  const fetchedUsers = data?.data ?? [];
-  console.log('d', fetchedUsers)
-  const totalRowCount = data?.meta?.totalRowCount ?? 0;
-  //column definitions - strongly typed if you are using TypeScript (optional, but recommended)
+export const Users = ({ membersdata }) => {
+  const members = membersdata.members;
+  console.log(members);
+
+  // Example of rendering - adjust according to your data structure
   const columns = useMemo<MRT_ColumnDef<membertypes>[]>(
     () => [
       {
@@ -58,7 +55,7 @@ export const  Users =() =>{
   const table = useMantineReactTable({
     columns,
     
-    data:fetchedUsers, 
+    data:members, 
     enableRowSelection: true, //enable some features
     enableColumnOrdering: true,
     enableGlobalFilter: false, //turn off a feature
@@ -67,4 +64,4 @@ export const  Users =() =>{
   //note: you can also pass table options as props directly to <MantineReactTable /> instead of using useMantineReactTable
   //but that is not recommended and will likely be deprecated in the future
   return <MantineReactTable  table={table} />;
-}
+};

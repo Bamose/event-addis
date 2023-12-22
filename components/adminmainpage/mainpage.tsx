@@ -2,12 +2,12 @@
 
 import { useAppSelector } from '@/store/Store'
 import React, { useEffect, useState } from 'react'
-import  {Users } from '../users/users'
+import  {Users } from '../../pages/users'
 
 
 
 
-export const Mainpage =() => {
+export const Mainpage =({membersdata} ) => {
       const {mainpage } = useAppSelector((state:any) => state.whichgab)
       const[mainpagedata, setmainpagedata] = useState('')
       useEffect(() => {
@@ -27,12 +27,12 @@ export const Mainpage =() => {
     {mainpagedata === 'gabsbylocation' ? (
      'as'
     ) : mainpagedata === 'users' ? (
-      <Users/>
+      <Users membersdata={membersdata}/>
     ) : mainpagedata === 'map' ?(
     "sdfsd"
     ):
     (
-        <Users/>
+      <Users membersdata={membersdata}/>
     )}
   </div>
   )

@@ -6,27 +6,18 @@ import { MantineProvider } from '@mantine/core';
 import { Navbar } from '@/components/header/Navbar';
 import './globals.css'
 import { Provider } from 'react-redux';
-import { Store } from '@/store/Store';
+import { Store, wrapper } from '@/store/Store';
+import { useEffect } from 'react';
 
 
-export default function App({ Component,  pageProps }: AppProps) {
+const App = ({Component, ...rest}:AppProps) => {
+
+  const {store, props} = wrapper.useWrappedStore(rest);
   return (
-
-    <Provider store={Store}>
-    <MantineProvider >
-      <Head>
-        <title>CSEC ASTU</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
-        />
-     
-        <link rel="shortcut icon" href="/favicon.svg" />
-      </Head>
-      
-      <Component {...pageProps} />
-    </MantineProvider>
+    <Provider store={store}>
+      <Component {...props.pageProps} />
     </Provider>
-
   );
-}
+};
+
+export default App;
