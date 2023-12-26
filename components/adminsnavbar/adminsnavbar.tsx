@@ -1,15 +1,14 @@
+import Link from 'next/link';
 import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-
 import classes from './Navbar.module.css';
+import { Group } from '@mantine/core';
 
 const links = [
   { link: '/superadmin', label: 'SuperAdmin' },
-  { link: '/cpd ', label: 'Colligate Programing' },
-  { link: '/cs ', label: 'Cyber Security' },
+  { link: '/cpd', label: 'Colligate Programming' },
+  { link: '/cs', label: 'Cyber Security' },
   { link: '/dev', label: 'Development' },
-
 ];
 
 export function AdminNavbar() {
@@ -17,31 +16,26 @@ export function AdminNavbar() {
   const [active, setActive] = useState(links[0].link);
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
+    <Link key={link.label} href={link.link}
+    
+        className={classes.link}
+        data-active={active === link.link}
+        onClick={() => setActive(link.link)}
     >
-      {link.label}
-    </a>
+        {link.label}
+     
+    </Link>
   ));
 
   return (
     <header className={classes.header}>
-      <div  className={classes.inner}>
-        <div> LOGO</div>
-      
-        <Group  className={classes.bar} spacing={10} >
+      <div className={classes.inner}>
+        <div>LOGO</div>
+        <Group  className='' spacing={5} >
           {items}
         </Group>
-        
+        {/* Optional Burger component */}
         {/* <Burger opened={opened} onClick={toggle} size="sm" /> */}
-       
       </div>
     </header>
   );

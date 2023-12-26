@@ -2,13 +2,15 @@
 
 import { useAppSelector } from '@/store/Store'
 import React, { useEffect, useState } from 'react'
-import  {Users } from '../../pages/users'
+import  {Users } from '../users/users'
+import Createvent from '../event/createevent'
 
 
 
 
 export const Mainpage =({membersdata} ) => {
       const {mainpage } = useAppSelector((state:any) => state.whichgab)
+      console.log('dsf', mainpage)
       const[mainpagedata, setmainpagedata] = useState('')
       useEffect(() => {
         if (mainpage === 'gabsbylocation') {
@@ -18,8 +20,8 @@ export const Mainpage =({membersdata} ) => {
        if (mainpage === 'users'){
             setmainpagedata('users')
         }
-        if (mainpage === 'map'){
-          setmainpagedata('map')
+        if (mainpage === 'events'){
+          setmainpagedata('events')
       }
       }, [mainpage,mainpagedata]);
   return(
@@ -28,11 +30,11 @@ export const Mainpage =({membersdata} ) => {
      'as'
     ) : mainpagedata === 'users' ? (
       <Users membersdata={membersdata}/>
-    ) : mainpagedata === 'map' ?(
-    "sdfsd"
+    ) : mainpagedata === 'events' ?(
+    <Createvent />
     ):
     (
-      <Users membersdata={membersdata}/>
+       <Users membersdata={membersdata}/> 
     )}
   </div>
   )

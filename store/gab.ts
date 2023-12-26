@@ -10,7 +10,7 @@ interface gabState {
 
 const initialState: gabState = {
   
- whichgab: 'newgab',
+ whichgab: 'users',
  mainpage: null
 
 };

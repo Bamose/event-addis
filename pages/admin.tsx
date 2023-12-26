@@ -1,5 +1,5 @@
 import { AdminNavbar } from "@/components/adminsnavbar/adminsnavbar";
-import EventList from "@/components/eventlist/EventList";
+import EventList from "@/components/event/EventList";
 import Footer from "@/components/footer/footer";
 import { Navbar } from "@/components/header/Navbar";
 import Imagecontent from "@/components/imagecontent/Imagecontent";

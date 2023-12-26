@@ -2,7 +2,7 @@
 import { eventtypes, membertypes} from '@/types/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from './Store';
-import { UserApiResponse } from '@/pages/users';
+import { UserApiResponse } from '@/components/users/users';
 import { HYDRATE } from "next-redux-wrapper";
 import { Action, PayloadAction } from '@reduxjs/toolkit';
 

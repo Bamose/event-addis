@@ -11,14 +11,14 @@ import { fa2, faList } from '@fortawesome/free-solid-svg-icons';
 
 export const  Sidebar =() => {
   const dispatch = useAppDispatch();
-const newgabs = () => {
-  dispatch(setwhichgabdata({whichgab: 'newgab'}))
+const users = () => {
+  dispatch(setmainpage({mainpage: 'users'}))
 }
-const hotgabs = () => {
-  dispatch(setwhichgabdata({whichgab: 'hotgab'}))
+const events = () => {
+  dispatch(setmainpage({mainpage: 'events'}))
 }
 const Gabsbylocation = () =>{
-  dispatch(setmainpage({mainpage:'gabsbylocation'}))
+  dispatch(setmainpage({mainpage:'report'}))
 }
   return (
 <>
@@ -29,7 +29,7 @@ const Gabsbylocation = () =>{
       <FontAwesomeIcon icon={faUser}  className=" bg-gray" />
       </div>
 
-      <button onClick={newgabs} className='px-4 '> Users </button>
+      <button onClick={users} className='px-4 '> Users </button>
       </div>
       <div className='flex flex-row pl-8 pt-5 text-textcolor border-b border-gray-100 cursor-pointer w-11/12'>
 
@@ -37,7 +37,7 @@ const Gabsbylocation = () =>{
       <FontAwesomeIcon icon={faCalendar} className="text-2xl bg-gray "  />
       </div>
 
-      <button onClick={hotgabs} className='px-4'> Events </button>
+      <button onClick={events} className='px-4'> Events </button>
       </div>
 
       <div className='flex flex-row pl-8 pt-5 text-textcolor border-b border-gray-100 cursor-pointer w-11/12'>
@@ -48,10 +48,10 @@ const Gabsbylocation = () =>{
       </div>
      
       <div className='flex flex-row pl-8 pt-5 text-textcolor cursor-pointer border-b border-gray-100 w-11/12'>
-      <div className='h-6 w-6 mb-2'>
-      <FontAwesomeIcon icon={faChartBar} className="text-2xl bg-gray "  />
+      <div className='h-3 w-3 mb-2'>
+      <FontAwesomeIcon icon={faChartBar}  className="text-xl bg-gray"  />
       </div>  
-      <button className='px-4'> Report analysis</button>
+      <button className='pl-4'> Report analysis</button>
       </div>
      
    

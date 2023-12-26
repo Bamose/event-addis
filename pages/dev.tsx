@@ -30,7 +30,6 @@ function superadmin(members) {
     </div>
     <div className='w-[85%]'>
             <Mainpage membersdata={members} /> 
-          
         </div>
     
     </div>

@@ -21,7 +21,7 @@
 }
 .link.active {
   background-color: #000;
-  color: #fff;
+  color: 'white';
 }
 
 .link {
@@ -35,7 +35,8 @@
   font-weight: 500;
 
   &:hover {
-    background-color: #ccc;
+    background-color: #000;
+    color: white;
   }
 
   &:active {
