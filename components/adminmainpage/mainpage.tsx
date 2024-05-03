@@ -25,7 +25,7 @@ export const Mainpage =({membersdata} ) => {
       }
       }, [mainpage,mainpagedata]);
   return(
-    <div>
+    <div >
     {mainpagedata === 'gabsbylocation' ? (
      'as'
     ) : mainpagedata === 'users' ? (

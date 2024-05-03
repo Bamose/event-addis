@@ -22,18 +22,19 @@ function superadmin(members) {
   console.log('familiya', members)
   return (
     <>
-    
-    <div className='overflow-' ><DashNavbar /></div>
-    <div className="flex flex-row  ">
-    <div className="w-[15%] ">
-    <Sidebar />
-    </div>
-    <div className='w-[85%]'>
-            <Mainpage membersdata={members} /> 
-        </div>
-    
-    </div>
 
+<div className='sticky top-0 z-10'>
+        <DashNavbar />
+      </div>
+      <div className="flex flex-row">
+        <div className="w-[15%] sticky top-0 left-0 h-[90vh]">
+          <Sidebar />
+        </div>
+        <div className='w-[85%]'>
+          <Mainpage membersdata={members} />
+        </div>
+      </div>
+      
     </>
   )
 }

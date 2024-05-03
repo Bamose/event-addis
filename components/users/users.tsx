@@ -24,7 +24,7 @@ import { IconEdit, IconSend, IconTrash, IconUserCircle } from '@tabler/icons-rea
 
 export const Users = ({ membersdata }) => {
   const members = membersdata.members;
-  console.log(members);
+ 
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string | undefined>
   >({});
@@ -245,5 +245,5 @@ export const Users = ({ membersdata }) => {
 
   //note: you can also pass table options as props directly to <MantineReactTable /> instead of using useMantineReactTable
   //but that is not recommended and will likely be deprecated in the future
-  return <div className='    '> <MantineReactTable  table={table} /></div>;
+  return <div className='mt-3 px-2'> <MantineReactTable  table={table} /></div>;
 };

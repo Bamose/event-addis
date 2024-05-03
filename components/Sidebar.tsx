@@ -22,7 +22,7 @@ const Gabsbylocation = () =>{
 }
   return (
 <>
-<div className='flex flex-col pt-[90%]  border-r border-gray-100 z-0 ' >
+<div className='flex  flex-col pt-[90%]  border-r border-gray-100 z-10  left-0 top-[90%] ' >
   
       <div className='flex flex-row pl-8 text-textcolor border-b cursor-pointer border-gray-100 w-11/12'>
         <div className='h-6 w-6 mb-2'>
