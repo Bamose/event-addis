@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
+import { Container, Group, Burger, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import classes from './Navbar.module.css';
+import { cn } from '@/utils/cn';
 
 const links = [
   { link: '/Events', label: 'Events' },
@@ -31,17 +32,22 @@ export function Navbar() {
   ));
 
   return (
-    <header className={classes.header}>
+
+    <Box className={classes.header } >
+      <header>
       <div  className={classes.inner}>
         <div> LOGO</div>
       
-        <Group  className={classes.bar} spacing={5} >
+        <Group  className={classes.bar} gap={5} >
           {items}
         </Group>
-    {/*     
-        <Burger opened={opened} onClick={toggle} size="sm" /> */}
+         
+        {/* <Burger opened={opened} onClick={toggle} size="sm" />  */}
+
        
       </div>
-    </header>
+      </header>
+    </Box>
+
   );
 }

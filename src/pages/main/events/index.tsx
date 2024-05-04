@@ -8,7 +8,7 @@ import { Box, Button } from "@mantine/core";
 export default function HomePage() {
   return (
     <>
-      <Box className="overflow-y:auto">
+      <Box className="overflow-y:auto ">
         <Navbar />
         <Imagecontent />
         <DepTabs />

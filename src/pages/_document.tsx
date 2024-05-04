@@ -7,9 +7,9 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/*     <ColorSchemeScript /> */}
-        
+        <title> Event</title>
       </Head>
-      <title> Event</title>
+    
       <body>
         <Main />
         <NextScript />
