@@ -3,7 +3,6 @@ import {
   Avatar,
   Box,
   Button,
-  Container,
   Flex,
   Group,
   Image,
@@ -14,7 +13,6 @@ import {
 import {
   IconCalendar,
   IconClock,
-  IconClock12,
   IconWorldWww,
 } from "@tabler/icons-react";
 import React from "react";
