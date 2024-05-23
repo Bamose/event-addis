@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
+import { Container, Group, Burger, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import classes from './Navbar.module.css';
+import { cn } from '@/utils/cn';
 
 const links = [
   { link: '/superadmin', label: 'SuperAdmin' },
@@ -32,8 +33,10 @@ export function DashNavbar() {
       <div className={classes.inner}>
         <div> LOGO</div>
 
-        <Group className={classes.bar} spacing={5}>
+        <Group className={classes.bar} gap={5}>
+          <Box className='pr-[10%]'>
           {items}
+          </Box>
         </Group>
 
       </div>
