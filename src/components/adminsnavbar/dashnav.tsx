@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -32,7 +33,7 @@ export function DashNavbar() {
       <div className={classes.inner}>
         <div> LOGO</div>
 
-        <Group className={classes.bar} spacing={5}>
+        <Group className={classes.bar} gap={5}>
           {items}
         </Group>
 

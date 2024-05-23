@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
@@ -31,7 +32,7 @@ export function AdminNavbar() {
     <header className={classes.header}>
       <div className={classes.inner}>
         <div>LOGO</div>
-        <Group  className='' spacing={5} >
+        <Group  className='' gap={5} >
           {items}
         </Group>
         {/* Optional Burger component */}
