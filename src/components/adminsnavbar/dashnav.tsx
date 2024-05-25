@@ -6,7 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './Navbar.module.css';
 
 const links = [
-  { link: '/superadmin', label: 'SuperAdmin' },
+  { link: '/admin', label: 'Admin' },
  
 ];
 

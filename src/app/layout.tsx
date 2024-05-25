@@ -7,7 +7,7 @@ import RootStyleRegistry from "@/providers/Mantine.provider";
 
 
 export const metadata = {
-  title: 'Event',
+  title: 'Event Addis',
   description: 'I am using Mantine with Next.js!',
 };
 export default function RootLayout({

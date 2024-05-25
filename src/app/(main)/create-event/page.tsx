@@ -6,7 +6,7 @@ import { FormDetail } from "./_components/FormDetail";
 export default function Homeage() {
   return (
     <>
-      <Stack>
+      <Stack bg={'white'}>
         <Navbar />
         <FormDetail />
         <Footer />
