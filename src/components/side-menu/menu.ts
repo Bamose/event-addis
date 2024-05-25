@@ -38,7 +38,7 @@ export const menu: MenuTree[] = [
       {
         label: "Tickets",
         icon: IconHistory,
-        link: "/admin/ticket",
+        link: "/admin/tickets",
         permission: ["view"],
       },
 
