@@ -3,6 +3,7 @@ import {
     Box,
     Button,
     Collapse,
+    Flex,
     Group,
     Stack,
     Text,
@@ -14,12 +15,31 @@ import {
   import { ImageDrop } from "./imageDrop";
   import { IconCircleLetterX, IconCirclePlus } from "@tabler/icons-react";
 import { RichTextEditorInput } from "./RichTextEditor";
+import { useRouter } from "next/navigation";
+import { modals } from "@mantine/modals";
  
   export function FormDetail() {
     const [eventDetailsOpen, setEventDetailsOpen] = useState(false);
     const [dateTimeOpen, setDateTimeOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
-  
+    const router = useRouter();
+
+    const handleCreate = () =>{
+      modals.openConfirmModal({
+        title: 'Create a ticket',
+        centered: true,
+        children: (
+          <Text size="sm">
+            Are you sure you want to save and create your ticket?
+          </Text>
+        ),
+        labels: { confirm: 'Create ticket', cancel: "cancel" },
+        confirmProps: { color: 'orange' },
+        onCancel: () => console.log('Cancel'),
+        onConfirm: () => router.push("/admin/tickets"),
+      });
+      
+    }
     return (
       <Stack gap={20} className="pt-[10vh] px-[20vw]">
         <Text>Back to event</Text>
@@ -106,6 +126,13 @@ import { RichTextEditorInput } from "./RichTextEditor";
             </Stack>
           </Collapse>
         </Box>
+        <Flex justify="flex-end" >
+            <Button bg={'orange'}
+              onClick={handleCreate}
+            > 
+              Save and Continue
+            </Button>
+        </Flex>
       </Stack>
     );
   }

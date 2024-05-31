@@ -14,7 +14,6 @@ export default async function UserLayout({
         <Box className="fixed top-0 w-full z-10">
           <DashNavbar />
         </Box>
-
         <Box className="container  pt-16  flex gap-4 bg-white ">
           <Box className="hidden md:block bg-white border border-gray-400/20 ml-[5%] h-auto rounded ">
             <DashboardMenu />

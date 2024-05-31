@@ -38,7 +38,7 @@ export function Detail() {
           <Group
             justify={"space-between"}
             className={`border border-gray rounded-2xl p-3 ${
-              selectedButton === 'paid' ? 'bg-blue-200' : ''
+              selectedButton === 'paid' ? 'bg-blue-200/20' : ''
             }`}
           >
             <Group>
@@ -58,7 +58,7 @@ export function Detail() {
           <Group
             justify={"space-between"}
             className={`border border-gray rounded-2xl p-3 ${
-              selectedButton === 'free' ? 'bg-blue-200' : ''
+              selectedButton === 'free' ? 'bg-blue-200/20' : ''
             }`}
           >
             <Group>
