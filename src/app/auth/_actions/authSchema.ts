@@ -9,7 +9,7 @@ export const newUserSchema = z.object({
   });
 
 export const loginSchema = z.object({
-  userName: z.string().trim().min(3).max(50),
+  email: z.string().email().trim().max(50).optional(),
   password: z.string().min(8).max(64),
 });
 

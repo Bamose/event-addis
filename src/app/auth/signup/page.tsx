@@ -1,8 +1,7 @@
 import { Box, Divider, Stack, Title, Text, Flex } from "@mantine/core";
-import Link from "next/link";
 import React from "react";
-import { GoogleButton } from "./_components/googleButton";
-import SignUpForm from "./_components/signUpForm";
+import SignUpForm from "../_components/signUpForm";
+
 
 export default function signupPage() {
   return (
