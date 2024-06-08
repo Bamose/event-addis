@@ -17,13 +17,12 @@ export default function SignUpForm() {
 
 
   const defaultValues = {
-    name: "",
+    userName: "",
     email: "",
     password: "",
   };
 
   const {
-    reset,
     trigger,
     register,
     getValues,
@@ -41,6 +40,9 @@ export default function SignUpForm() {
 
     startCreate(async () => {
       const values = getValues();
+      console.log(values)
+      redirect(`/events`)
+
       /* const result = await signUp(values);
       if (result?.data) {
         redirect(`/auth/verify/${result?.data?.verification?.id}`);
@@ -58,15 +60,15 @@ export default function SignUpForm() {
     });
   }; 
   return (
-    <form /* action={handleCreate} */>
-      <Stack bg={'white'} className="h-[100vh]">
+    <form  action={handleCreate} >
+      <Stack bg={'white'} className="h-[70vh]">
         <TextInput
-          label="Full Name"
-          placeholder="Enter your full name"
+          label="User Name"
+          placeholder="Enter your user name"
           autoComplete="name"
           required
-          {...register("name")}
-          error={errors.name ? errors.name.message?.toString() : ""}
+          {...register("userName")}
+          error={errors.userName ? errors.userName.message?.toString() : ""}
         />
        
           <TextInput
@@ -100,7 +102,7 @@ export default function SignUpForm() {
           </Alert>
         )}
         <Button type="submit" disabled={creating} loading={creating} fullWidth>
-          Next
+          Sign Up
         </Button>
         <Button component={Link} href="/auth/login" fullWidth variant="outline">
           Back to Login
