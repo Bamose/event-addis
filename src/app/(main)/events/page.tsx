@@ -1,4 +1,3 @@
-'use client'
 import EventList from "@/components/event/EventList";
 import Footer from "@/components/footer/footer";
 import { Navbar } from "@/components/header/Navbar";
