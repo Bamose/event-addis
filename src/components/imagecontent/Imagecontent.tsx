@@ -1,9 +1,8 @@
 import React from "react";
-import { Title, Text, Anchor, Box, Flex, Group } from "@mantine/core";
+import { Title, Text, Anchor, Box, Flex, Group,Image } from "@mantine/core";
 import classes from "./image.module.css";
 import { cn } from "@/utils/cn";
 import { IconCamera, IconMicrophone } from "@tabler/icons-react";
-
 function Imagecontent() {
   const icons = [
     { id: 1, IconComponent: IconMicrophone },
@@ -18,7 +17,9 @@ function Imagecontent() {
   ];
   return (
     <Box >
-      <Box className={classes.image}>imagecontent</Box>
+      <Box className={classes.image}>
+        <Image src="image.png" alt="image" className="" />
+      </Box>
       <Group gap={'64'} className={cn('px-20 pb-10')}>
       {icons.map((iconItem) => (
         <Group  key={iconItem.id} >

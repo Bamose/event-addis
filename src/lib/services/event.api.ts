@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const authtoken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjoiODBjNTNlNjAtY2I0NC00YTRmLTg5YTgtN2RhYTMzMzI1ZjdmIiwidXNlcmlkIjoiZTE4MGYzZTktZDVjMC00NjkwLTg3ZTUtMjMzNmM2NjA2YWU4IiwiaWF0IjoxNzE3ODYxNzM4fQ.0qlxDsRHzV6-3KDWgK4Lwg1XRYjzL69f6jw0WkfgQVw";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjoiNzIwOTlmZDAtYjVjNS00NTlmLWJiODItYmNlNGRkYTAzZmFjIiwidXNlcmlkIjoiZWY4ZGQ4NDYtMTNmYi00NjMyLTk3MDktYmY4NWMyY2UwZDgxIiwiaWF0IjoxNzE3Njk5MjE5fQ.VFxCcWEfc2JTU3UhWDBEu5wkJhy8fO0KLtrrztTIG5M";
 export const eventApi = createApi({
   reducerPath: "eventApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),
@@ -8,9 +8,22 @@ export const eventApi = createApi({
     createEvent: build.mutation<any, any>({
       query(event) {
         return {
-          url: `event`,
+          url: "event",
           method: "POST",
           body: event,
+          headers: {
+            Authorization: `Bearer ${authtoken}`,
+          },
+        };
+      },
+    }),
+
+    createTicket: build.mutation<any, any>({
+      query(ticket) {
+        return {
+          url: "ticket",
+          method: "POST",
+          body: ticket,
           headers: {
             Authorization: `Bearer ${authtoken}`,
           },
@@ -29,15 +42,20 @@ export const eventApi = createApi({
     }),
 
     signin: build.mutation<any, any>({
-        query(user) {
-          return {
-            url: "auth/login",
-            method: "POST",
-            body: user,
-          };
-        },
-      }),
+      query(user) {
+        return {
+          url: "auth/login",
+          method: "POST",
+          body: user,
+        };
+      },
+    }),
   }),
 });
 
-export const { useCreateEventMutation, useSignUpMutation, useSigninMutation } = eventApi;
+export const {
+  useCreateEventMutation,
+  useSignUpMutation,
+  useSigninMutation,
+  useCreateTicketMutation,
+} = eventApi;

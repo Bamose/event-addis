@@ -18,7 +18,7 @@ export const newEventSchema = z.object({
     summary: z.string(),
     date: z.date(),
     time: z.string(),
-    image: z.string(),
+    image: z.string(),  
     location: z.string(),
     organisedBy: z.string(),
   })

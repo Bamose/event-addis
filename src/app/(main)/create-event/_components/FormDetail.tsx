@@ -21,6 +21,7 @@ import { DateInput, DatePickerInput, TimeInput } from "@mantine/dates";
 import { NewEvent, newEventSchema } from "../_actions/event.schema";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateEventMutation } from "@/lib/services/event.api";
 
 export function FormDetail() {
   const [eventDetailsOpen, setEventDetailsOpen] = useState(false);
@@ -28,11 +29,11 @@ export function FormDetail() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [creating, startCreate] = useTransition();
   const router = useRouter();
-
+  const [eventData, { data }] = useCreateEventMutation();
   const defaultValues = {
     eventName: "",
     description: {},
-    date: new Date,
+    date: new Date(),
     time: "",
     image: "",
     location: "",
@@ -54,31 +55,34 @@ export function FormDetail() {
   const handleCreate = async () => {
     const valid = await trigger();
     const values = getValues();
-    console.log(values)
+
     if (!valid) return;
 
     startCreate(async () => {
       const values = getValues();
-      console.log(values)
-      modals.openConfirmModal({
-        title: "Create a ticket",
-        centered: true,
-        children: (
-          <Text size="sm">
-            Are you sure you want to save and create your ticket?
-          </Text>
-        ),
-        labels: { confirm: "Create ticket", cancel: "cancel" },
-        confirmProps: { color: "orange" },
-        onCancel: () => console.log("Cancel"),
-        onConfirm: () => {
-  
-          router.push("/admin/tickets");
-        },
-      });
-      
+      const result = await eventData(values);
+      console.log("event id", result);
+
+      if ("data" in result) {
+        console.log("event id", result.data.eventId);
+        modals.openConfirmModal({
+          title: "Create a ticket",
+          centered: true,
+          children: (
+            <Text size="sm">
+              Are you sure you want to save and create your ticket?
+            </Text>
+          ),
+          labels: { confirm: "Create ticket", cancel: "cancel" },
+          confirmProps: { color: "orange" },
+          onCancel: () => console.log("Cancel"),
+          onConfirm: () => {
+             router.push(`/admin/tickets?id=${result.data.eventId}`);
+          },
+        });
+      }
+      console.log(values);
     });
-  
   };
   return (
     <Stack gap={20} className="pt-[10vh] px-[20vw]">
@@ -135,7 +139,7 @@ export function FormDetail() {
               {...register("summary")}
               error={errors.summary ? errors.summary.message?.toString() : ""}
             />
-          </Stack>
+          </Stack>u8uu
         </Collapse>
       </Box>
 
@@ -231,7 +235,7 @@ export function FormDetail() {
         </Collapse>
       </Box>
       <Flex justify="flex-end">
-        <Button bg={"orange"} onClick={handleCreate}>
+        <Button bg={"orange"} onClick={handleCreate} loading={creating}>
           Save and Continue
         </Button>
       </Flex>
