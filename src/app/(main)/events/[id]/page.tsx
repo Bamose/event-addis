@@ -5,7 +5,12 @@ import { EventDetail } from "./_components/eventDetail";
 import Footer from "@/components/footer/footer";
 import { cn } from "@/utils/cn";
 
-function EventDetailsPage() {
+function EventDetailsPage({
+  params: { id },
+}: {
+  params: { id: string };
+}
+) {
   return (
     <Stack className={cn('bg-white')}>
       <Navbar />
