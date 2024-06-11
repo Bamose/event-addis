@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import classes from "./evenlist.module.css";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Button, Text } from "@mantine/core";
+import { Box, Button, Text, Image } from "@mantine/core";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
 import { Event } from "@/app/(main)/create-event/_actions/event.schema";
@@ -28,10 +27,9 @@ export function EventList({ data }: EventListProps) {
           <Box className={`${classes.box} ${classes.shadow} overflow-clip `}>
             <Box className="h-[27vh] mb-2  w-[18vw] ">
               <Image
-                src="/inter.jpg"
+                src={event.image ? event.image : "/inter.jpg"}
                 alt="Event Image"
-                width={400}
-                height={200}
+                style={{ height: "27vh" }}
               />
             </Box>
             <div className="flex flex-col justify-start fa-align-left">

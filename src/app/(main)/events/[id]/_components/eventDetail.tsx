@@ -12,19 +12,28 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { IconCalendar, IconClock, IconWorldWww } from "@tabler/icons-react";
 import React from "react";
+import { RegisterModal } from "./registration";
 interface EventListProps {
   data: Event;
 }
 export function EventDetail({ data }: EventListProps ) {
+  const [opened, { open, close }] = useDisclosure(false);
+  
+  const register =()=>{
+
+  } 
   return (
+    <>
     <Stack className={cn("pt-[7vh] px-40")}>
       <Box className={cn(" py-10  rounded-lg ")}>
         <Image
-          src="/inter.jpg"
+          src={data.image ? data.image : "/inter.jpg"}
           alt="My Image"
           className={cn(" w-full h-[50vh] rounded-lg")}
+          style={{ borderRadius: '10px' }}
         />
       </Box>
       <Flex>
@@ -105,11 +114,13 @@ export function EventDetail({ data }: EventListProps ) {
         </Stack>
         <Box className="shadow-lg border border-gray rounded-lg h-[30vh] w-[30vw] flex flex-col justify-center items-center p-4 space-y-4">
           <Text className={cn("self-center ")}>Free Reservation</Text>
-          <Button color={"orange"} className={cn("bg-orange-600 px-10")}>
+          <Button color={"orange"} className={cn("bg-orange-600 px-10")} onClick={open}>
             Reserve Spot
           </Button>
         </Box>
       </Flex>
-    </Stack>
+    </Stack>  
+    <RegisterModal isOpen={opened} onClose={close} />
+    </>
   );
 }

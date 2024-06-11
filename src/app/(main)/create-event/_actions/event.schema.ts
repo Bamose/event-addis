@@ -22,7 +22,10 @@ export const newEventSchema = z.object({
     location: z.string(),
     organisedby: z.string(),
   })
+  export const registerSchema = z.object({
+    fullname: z.string(),
+  })
 
 export type Event= z.infer<typeof eventSchema>;
 export type NewEvent = z.infer<typeof newEventSchema>;
-
+export type Register= z.infer<typeof registerSchema>;

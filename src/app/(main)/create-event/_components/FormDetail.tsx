@@ -55,7 +55,7 @@ export function FormDetail() {
   const handleCreate = async () => {
     const valid = await trigger();
     const values = getValues();
-    console.log(values)
+    console.log(values);
     if (!valid) return;
 
     startCreate(async () => {
@@ -77,7 +77,7 @@ export function FormDetail() {
           confirmProps: { color: "orange" },
           onCancel: () => console.log("Cancel"),
           onConfirm: () => {
-             router.push(`/admin/tickets?id=${result.data.eventId}`);
+            router.push(`/admin/tickets?id=${result.data.eventId}`);
           },
         });
       }
@@ -92,7 +92,16 @@ export function FormDetail() {
         Add all of your event details and let attendees know what to expect
       </Text>
       <Box className="border border-gray rounded-lg bg-gray-400/20 cursor-pointer">
-        <ImageDrop />
+        <Controller
+          name="image"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <ImageDrop
+              onImageUpload={(objectName) => onChange(objectName)}
+              value={value}
+            />
+          )}
+        />
       </Box>
 
       <Box className="p-5 border border-gray rounded-lg ">
@@ -139,7 +148,8 @@ export function FormDetail() {
               {...register("summary")}
               error={errors.summary ? errors.summary.message?.toString() : ""}
             />
-          </Stack>u8uu
+          </Stack>
+          u8uu
         </Collapse>
       </Box>
 

@@ -5,6 +5,7 @@ export const eventApi = createApi({
   reducerPath: "eventApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),
   endpoints: (build) => ({
+    
     createEvent: build.mutation<any, any>({
       query(event) {
         return {
