@@ -4,17 +4,19 @@ import React from "react";
 import { EventDetail } from "./_components/eventDetail";
 import Footer from "@/components/footer/footer";
 import { cn } from "@/utils/cn";
+import { getEventById } from "../_actions/event.query";
 
-function EventDetailsPage({
+async function EventDetailsPage({
   params: { id },
 }: {
   params: { id: string };
 }
 ) {
+  const data = await getEventById(id)
   return (
     <Stack className={cn('bg-white')}>
       <Navbar />
-      <EventDetail />
+      <EventDetail data={data} />
       <Footer />
     </Stack>
   );

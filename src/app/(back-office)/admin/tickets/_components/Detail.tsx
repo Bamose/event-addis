@@ -35,9 +35,9 @@ export function Detail() {
   console.log(eventId)
   const togglePanel = (buttonType: string) => {
     setPanelOpen(true);
-    setValue('ticketType', buttonType);
+    setValue('tickettype', buttonType);
     if(eventId){
-    setValue('eventId', eventId)
+    setValue('eventid', eventId)
     }
     setSelectedButton(buttonType);
   };
@@ -195,9 +195,9 @@ export function Detail() {
               <TextInput
                 placeholder="Full Name"
                 required
-                {...register("fullName")}
+                {...register("fullname")}
                 error={
-                  errors.fullName ? errors.fullName.message?.toString() : ""
+                  errors.fullname ? errors.fullname.message?.toString() : ""
                 }
               />
               <TextInput
@@ -219,7 +219,7 @@ export function Detail() {
               />
               <Group grow>
               <Controller
-                name="salesStartDate"
+                name="salesstartdate"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <DateInput
@@ -231,7 +231,7 @@ export function Detail() {
                 )}
               />
               <Controller
-                name="salesStartTime"
+                name="salesstarttime"
                 control={control}
                 render={({ field: { onChange } }) => (
                   <TimeInput
@@ -244,7 +244,7 @@ export function Detail() {
               </Group>
               <Group grow>
               <Controller
-                name="salesEndDate"
+                name="salesenddate"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <DateInput
@@ -256,7 +256,7 @@ export function Detail() {
                 )}
               />
               <Controller
-                name="salesEndTime"
+                name="salesendtime"
                 control={control}
                 render={({ field: { onChange } }) => (
                   <TimeInput

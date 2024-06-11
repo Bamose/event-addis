@@ -31,13 +31,13 @@ export function FormDetail() {
   const router = useRouter();
   const [eventData, { data }] = useCreateEventMutation();
   const defaultValues = {
-    eventName: "",
+    eventname: "",
     description: {},
     date: new Date(),
     time: "",
     image: "",
     location: "",
-    organisedBy: "",
+    organisedby: "",
   };
 
   const {
@@ -55,7 +55,7 @@ export function FormDetail() {
   const handleCreate = async () => {
     const valid = await trigger();
     const values = getValues();
-
+    console.log(values)
     if (!valid) return;
 
     startCreate(async () => {
@@ -127,9 +127,9 @@ export function FormDetail() {
               label="Event title"
               className="w-full"
               required
-              {...register("eventName")}
+              {...register("eventname")}
               error={
-                errors.eventName ? errors.eventName.message?.toString() : ""
+                errors.eventname ? errors.eventname.message?.toString() : ""
               }
             />
             <Textarea

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const authtoken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjoiNzIwOTlmZDAtYjVjNS00NTlmLWJiODItYmNlNGRkYTAzZmFjIiwidXNlcmlkIjoiZWY4ZGQ4NDYtMTNmYi00NjMyLTk3MDktYmY4NWMyY2UwZDgxIiwiaWF0IjoxNzE3Njk5MjE5fQ.VFxCcWEfc2JTU3UhWDBEu5wkJhy8fO0KLtrrztTIG5M";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbmlkIjoiZmFjOTZjZjUtZGU0ZC00Y2ExLThmNGUtMzE4YTNiYzdlZjUxIiwidXNlcmlkIjoiYTQwYWE5YWYtOWExMC00MTVhLWJlMGUtNjI2NTRkZWQwMzMwIiwiaWF0IjoxNzE4MDUyNzkyfQ.3gU8LA71vo0G4mQStuci2lCEWMFvJ2wmHJlLmKZB0W0";
 export const eventApi = createApi({
   reducerPath: "eventApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),

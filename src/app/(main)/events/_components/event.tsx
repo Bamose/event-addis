@@ -36,7 +36,7 @@ export function EventList({ data }: EventListProps) {
             </Box>
             <div className="flex flex-col justify-start fa-align-left">
               <text className="text-xl text-left font-medium px-2 w-full t">
-                {event.eventName}
+                {event.eventname}
               </text>
 
               <text className="text-base text-left pt-1 text-red-500 font-medium px-2 pb-3 w-full t">

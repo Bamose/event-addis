@@ -1,4 +1,5 @@
-'use client'
+"use client";
+import { Event } from "@/app/(main)/create-event/_actions/event.schema";
 import { cn } from "@/utils/cn";
 import {
   Avatar,
@@ -11,14 +12,12 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import {
-  IconCalendar,
-  IconClock,
-  IconWorldWww,
-} from "@tabler/icons-react";
+import { IconCalendar, IconClock, IconWorldWww } from "@tabler/icons-react";
 import React from "react";
-
-export function EventDetail() {
+interface EventListProps {
+  data: Event;
+}
+export function EventDetail({ data }: EventListProps ) {
   return (
     <Stack className={cn("pt-[7vh] px-40")}>
       <Box className={cn(" py-10  rounded-lg ")}>
@@ -31,8 +30,15 @@ export function EventDetail() {
       <Flex>
         <Stack className={cn("w-full")}>
           <Box w={700}>
-            <Text>Wednesday, May 29</Text>
-            <Title>Journey into the Sacred Feminine - The S.H.E Method</Title>
+          <text className="text-base pt-1 text-gray-500 font-medium px-2 pb-3 w-full t">
+                {new Date(data.date).toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </text>
+            <Title>{data.eventname}</Title>
           </Box>
           <Group
             justify={"space-between"}
@@ -63,7 +69,15 @@ export function EventDetail() {
             <Title size={"h3"}>Date and Time</Title>
             <Group>
               <IconCalendar />
-              <Text>Wednesday, May 29 · 4 - 5am EAT</Text>
+              <Text>{new Date(data.date).toLocaleString("en-US", {
+                  weekday: "short",
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZoneName: "short",
+                })}</Text>
             </Group>
           </Stack>
 
@@ -71,7 +85,7 @@ export function EventDetail() {
             <Title size={"h3"}>Location</Title>
             <Group>
               <IconWorldWww />
-              <Text>Online</Text>
+              <Text>{data.location}</Text>
             </Group>
           </Stack>
 
