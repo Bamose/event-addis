@@ -1,6 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, Button, PasswordInput, Stack, TextInput } from "@mantine/core";
+import { Alert, Box, Button, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { useToggle } from "@mantine/hooks";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { IconAlertCircle } from "@tabler/icons-react";
 import { NewUser, newUserSchema } from "../_actions/authSchema";
 import { useSignUpMutation } from "@/lib/services/event.api";
+import { cn } from "@/utils/cn";
 
 export default function SignUpForm() {
   const [creating, startCreate] = useTransition();
@@ -84,12 +85,14 @@ export default function SignUpForm() {
             {errorMessages}
           </Alert>
         )}
-        <Button type="submit" disabled={creating} loading={creating} fullWidth>
+        <Button bg={'orange'} type="submit" disabled={creating} loading={creating} fullWidth>
           Sign Up
         </Button>
-        <Button component={Link} href="/auth/login" fullWidth variant="outline">
-          Login
+        <Box className={cn("border py-1 cursor-pointer   border-orange-500 flex flex-row w-full justify-center rounded")}>
+        <Button  unstyled c={'orange'} component={Link} href="/auth/signin" fullWidth variant="outline">
+          Log in
         </Button>
+        </Box>
       </Stack>
     </form>
   );

@@ -14,8 +14,8 @@
 }
 
 .bar {
-  padding-left: 60%;
-  padding-right: 7%;
+  padding-left: 50%;
+  padding-right: 3%;
 }
 
 .link {
@@ -29,7 +29,7 @@
   font-weight: 500;
 
   &:hover {
-    background-color: #ccc;
+    background-color: #e57c1a;
     color: #fff;
   }
 

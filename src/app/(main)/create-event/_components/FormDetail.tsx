@@ -149,7 +149,6 @@ export function FormDetail() {
               error={errors.summary ? errors.summary.message?.toString() : ""}
             />
           </Stack>
-          u8uu
         </Collapse>
       </Box>
 

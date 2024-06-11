@@ -1,16 +1,17 @@
-'use client'
+"use client";
 
-import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-
-import classes from './Navbar.module.css';
+import { useState } from "react";
+import { Container, Group, Burger,Image } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import Link from "next/link";
+import classes from "./Navbar.module.css";
+import { UserNav } from "./userNavbar";
 
 const links = [
-  { link: '/Events', label: 'Events' },
-  { link: '/signin', label: 'Sign in' },
-  { link: '/signup', label: 'Sign Up' },
-
+  { link: "/events", label: "Events" },
+  { link: "/create-event", label: "Create" },
+  { link: "/auth/signin", label: "Sign In" },
+  { link: "/auth/signup", label: "Sign Up" },
 ];
 
 export function Navbar() {
@@ -18,31 +19,32 @@ export function Navbar() {
   const [active, setActive] = useState(links[0].link);
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
       href={link.link}
       className={classes.link}
       data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
+      onClick={() => {
         setActive(link.link);
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
     <header className={classes.header}>
-      <div  className={classes.inner}>
-        <div> LOGO</div>
-      
-        <Group  className={classes.bar} gap={5} >
+      <div className={classes.inner}>
+        <div>
+          <Image src="/eventaddis-logo.png" alt="logo" style={{width:'60px', height:'60px'}} />
+        </div>
+
+        <Group className={classes.bar} gap={5}>
           {items}
+          <UserNav />
         </Group>
-    {/*     
+        {/*     
         <Burger opened={opened} onClick={toggle} size="sm" /> */}
-       
       </div>
     </header>
   );
