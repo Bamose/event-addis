@@ -10,6 +10,7 @@ export const eventSchema = z.object({
     time: z.string(),
     image: z.string(),
     location: z.string(),
+    tickettype:z.string(),
     organisedby: z.string(),
 });
 export const newEventSchema = z.object({
@@ -24,6 +25,7 @@ export const newEventSchema = z.object({
   })
   export const registerSchema = z.object({
     fullname: z.string(),
+    eventid: z.string(),
   })
 
 export type Event= z.infer<typeof eventSchema>;

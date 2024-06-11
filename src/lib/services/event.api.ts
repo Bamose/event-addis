@@ -5,7 +5,7 @@ export const eventApi = createApi({
   reducerPath: "eventApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/" }),
   endpoints: (build) => ({
-    
+
     createEvent: build.mutation<any, any>({
       query(event) {
         return {
@@ -25,6 +25,19 @@ export const eventApi = createApi({
           url: "ticket",
           method: "POST",
           body: ticket,
+          headers: {
+            Authorization: `Bearer ${authtoken}`,
+          },
+        };
+      },
+    }),
+
+    createRegister: build.mutation<any, any>({
+      query(register) {
+        return {
+          url: "register",
+          method: "POST",
+          body: register,
           headers: {
             Authorization: `Bearer ${authtoken}`,
           },
@@ -59,4 +72,5 @@ export const {
   useSignUpMutation,
   useSigninMutation,
   useCreateTicketMutation,
+  useCreateRegisterMutation,
 } = eventApi;

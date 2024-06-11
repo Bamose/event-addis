@@ -13,10 +13,10 @@ interface EventListProps {
 export function EventList({ data }: EventListProps) {
   const router = useRouter();
   const handleRedirect = (id: string) => {
-    router.push(`/events/${id}`);
+    router.push(`/admin/event/${id}`);
   };
   return (
-  
+    <>
       <Group>
         {data.map((event) => (
           <Button
@@ -67,8 +67,8 @@ export function EventList({ data }: EventListProps) {
               </div>
             </Box>
           </Button>
-        ))};
+        ))}
       </Group>
-  
+    </>
   );
 }

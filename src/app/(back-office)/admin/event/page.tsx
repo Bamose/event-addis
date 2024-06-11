@@ -1,13 +1,14 @@
-import { Box } from '@mantine/core'
-import React from 'react'
-import { Detail } from './_components/Detail'
+import { Box, Stack, Title } from "@mantine/core";
+import React from "react";
+import { EventList } from "./_components/event";
+import { getEventData } from "./_actions/event.user.query";
 
-
-export default function  eventpage () {
+export default async function eventpage() {
+  const data = await getEventData();
   return (
-    <Box>
-        <Detail />
-    </Box>
-  )
+    <Stack>
+      <Title>Events</Title>
+      <EventList data={data} />
+    </Stack>
+  );
 }
-
