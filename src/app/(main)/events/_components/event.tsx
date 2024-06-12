@@ -23,7 +23,7 @@ export function EventList({ data }: EventListProps) {
             key={event.id}
             unstyled
             onClick={() => handleRedirect(event.id)}
-            className={cn("cursor-pointer px-[3vw]")}
+            className={cn("cursor-pointer px-[2vw]")}
           >
             <Box className={`${classes.box} ${classes.shadow} overflow-clip `}>
               <Box className="h-[27vh] mb-2  w-[18vw] ">

@@ -21,7 +21,6 @@ async function EventDetailsPage({
     <Stack className={cn('bg-white')}>
       <Navbar />
       <EventDetail data={data} />
-      
       <Footer />
     </Stack>
   );

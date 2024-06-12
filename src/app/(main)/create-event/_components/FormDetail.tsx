@@ -54,8 +54,6 @@ export function FormDetail() {
 
   const handleCreate = async () => {
     const valid = await trigger();
-    const values = getValues();
-    console.log(values);
     if (!valid) return;
 
     startCreate(async () => {
